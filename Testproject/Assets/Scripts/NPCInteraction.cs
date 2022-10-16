@@ -6,7 +6,7 @@ public class NPCInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject startDialogue = null;
 
-       // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -17,5 +17,5 @@ public class NPCInteraction : MonoBehaviour
             startDialogue.SetActive(true);
         }
     }
-    
+
 }
