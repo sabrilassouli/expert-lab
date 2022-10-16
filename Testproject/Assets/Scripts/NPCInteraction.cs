@@ -7,19 +7,7 @@ public class NPCInteraction : MonoBehaviour
     [SerializeField] private GameObject startDialogue = null;
     [SerializeField] private GameObject startUnhappyDialogue = null;
     [SerializeField] private GameObject talkSign = null;
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log("F key pressed");
-            Cursor.lockState = CursorLockMode.None;
-            //MouseLook.   find a way to switch bool indialogue to off in mouselook script to stop looking around 
-            startDialogue.SetActive(true);
-        }
-    }
-
+    public bool happy = true;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -33,10 +21,18 @@ public class NPCInteraction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                talkSign.SetActive(false);
                 Debug.Log("F key pressed");
                 Cursor.lockState = CursorLockMode.None;
                 //MouseLook.   find a way to switch bool indialogue to off in mouselook script to stop looking around 
-                startDialogue.SetActive(true);
+                if (happy == true)
+                {
+                    startDialogue.SetActive(true);
+                }
+                else if (happy == false)
+                {
+                    startUnhappyDialogue.SetActive(true);
+                }
             }
         }
     }
@@ -48,6 +44,15 @@ public class NPCInteraction : MonoBehaviour
             startDialogue.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+    public void MakeUnhappy()
+    {
+        happy = false;
+        Debug.Log("npc is unhappy now");
+    }
+    public void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
