@@ -7,7 +7,8 @@ public class NPCInteraction : MonoBehaviour
     [SerializeField] private GameObject startDialogue = null;
     [SerializeField] private GameObject startUnhappyDialogue = null;
     [SerializeField] private GameObject talkSign = null;
-    public bool happy = true;
+    public float moodval = 80;
+    public playerController playerController;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -24,12 +25,13 @@ public class NPCInteraction : MonoBehaviour
                 talkSign.SetActive(false);
                 Debug.Log("F key pressed");
                 Cursor.lockState = CursorLockMode.None;
+                playerController.isInteracting = true;
                 //MouseLook.   find a way to switch bool indialogue to off in mouselook script to stop looking around 
-                if (happy == true)
+                if (moodval >= 50)
                 {
                     startDialogue.SetActive(true);
                 }
-                else if (happy == false)
+                else if (moodval < 50)
                 {
                     startUnhappyDialogue.SetActive(true);
                 }
@@ -45,10 +47,15 @@ public class NPCInteraction : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
-    public void MakeUnhappy()
+    public void LowerMoodval()
     {
-        happy = false;
-        Debug.Log("npc is unhappy now");
+        moodval -= 40;
+        Debug.Log("npc is LESS HAPPY now");
+    }
+    public void RiseMoodval()
+    {
+        moodval = 60;
+        Debug.Log("npc is MORE HAPPY now");
     }
     public void LockMouse()
     {

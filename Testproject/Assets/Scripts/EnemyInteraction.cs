@@ -11,6 +11,7 @@ public class EnemyInteraction : MonoBehaviour
     [SerializeField] private GameObject captureSign = null;
     public bool happy = true;
     NavMeshAgent agent;
+    public playerController playerController;
 
     public Transform Escape;
 
@@ -41,6 +42,8 @@ public class EnemyInteraction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                
+                playerController.isInteracting = true;
                 agent.speed = 0f;
                 talkSign.SetActive(false);
                 Debug.Log("F key pressed");
@@ -61,9 +64,12 @@ public class EnemyInteraction : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            playerController.isInteracting = false;
             talkSign.SetActive(false);
             captureSign.SetActive(false);
             startDialogue.SetActive(false);
+
+            
 
             Cursor.lockState = CursorLockMode.Locked;
         }

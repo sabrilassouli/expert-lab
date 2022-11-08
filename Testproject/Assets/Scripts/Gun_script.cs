@@ -8,17 +8,24 @@ public class Gun_script : MonoBehaviour
     public Camera fpsCam;
     public ParticleSystem muzzleflash;
     public GameObject impactEffect;
+    playerController playerController;
+
+    public AudioSource gunshot;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            //if (playerController.isInteracting == false)
+            //{
             shoot();
+            //}
         }
     }
     void shoot()
     {
         muzzleflash.Play();
+        gunshot.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) ;
         {

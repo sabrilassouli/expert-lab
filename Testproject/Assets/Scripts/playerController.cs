@@ -10,6 +10,11 @@ public class playerController : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public float sprintSpeed = 5f;
+    public bool isInteracting = false;
+
+    public GameObject Gun;
+    public GameObject Tazer;
+    public GameObject Handcuffs;
 
     float speedBoost = 1f;
     Vector3 velocity;
@@ -49,6 +54,27 @@ public class playerController : MonoBehaviour
         {
             SceneManager.LoadScene(0);
             Cursor.lockState = CursorLockMode.None;
+        }
+        //gun
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Gun.SetActive(true);
+            Tazer.SetActive(false);
+            Handcuffs.SetActive(false);
+        }
+        //tazer
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Gun.SetActive(false);
+            Tazer.SetActive(true);
+            Handcuffs.SetActive(false);
+        }
+        //handcuffs
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Gun.SetActive(false);
+            Tazer.SetActive(false);
+            Handcuffs.SetActive(true);
         }
 
     }
