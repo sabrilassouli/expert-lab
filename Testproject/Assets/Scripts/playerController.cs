@@ -78,4 +78,10 @@ public class playerController : MonoBehaviour
         }
 
     }
+    public void talking()
+    {
+        Gun.SetActive(false);
+        Tazer.SetActive(false);
+        Handcuffs.SetActive(false);
+    }
 }

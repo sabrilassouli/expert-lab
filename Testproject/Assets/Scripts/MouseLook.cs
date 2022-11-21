@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour
     public float mouseSensitivity = 300f;
     public Transform playerBody;
     float xRotation = 0f;
-    playerController playerController;
+    public playerController playerController;
 
 
     void Start()
@@ -18,8 +18,8 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
 
-        //if (playerController.isInteracting == false)
-        //{
+        if (playerController.isInteracting == false)
+        {
 
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -30,7 +30,7 @@ public class MouseLook : MonoBehaviour
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
             playerBody.Rotate(Vector3.up * mouseX);
-        //}
+        }
     }
 
 }

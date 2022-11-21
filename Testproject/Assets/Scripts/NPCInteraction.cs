@@ -22,6 +22,7 @@ public class NPCInteraction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                playerController.talking();
                 talkSign.SetActive(false);
                 Debug.Log("F key pressed");
                 Cursor.lockState = CursorLockMode.None;
@@ -45,6 +46,7 @@ public class NPCInteraction : MonoBehaviour
             talkSign.SetActive(false);
             startDialogue.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
+            playerController.isInteracting = false;
         }
     }
     public void LowerMoodval()

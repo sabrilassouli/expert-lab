@@ -68,6 +68,7 @@ public class EnemyInteraction : MonoBehaviour
             talkSign.SetActive(false);
             captureSign.SetActive(false);
             startDialogue.SetActive(false);
+            enemyMove();
 
             
 
@@ -79,6 +80,7 @@ public class EnemyInteraction : MonoBehaviour
         happy = false;
         Debug.Log("npc is unhappy now");
         agent.SetDestination(Escape.position);
+        enemyMove();
     }
     public void LockMouse()
     {
