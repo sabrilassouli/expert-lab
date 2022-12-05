@@ -11,6 +11,7 @@ public class playerController : MonoBehaviour
     public float jumpHeight = 3f;
     public float sprintSpeed = 5f;
     public bool isInteracting = false;
+    public bool pauzed = false;
 
     public GameObject Gun;
     public GameObject Tazer;
@@ -75,6 +76,20 @@ public class playerController : MonoBehaviour
             Gun.SetActive(false);
             Tazer.SetActive(false);
             Handcuffs.SetActive(true);
+        }
+        //handcuffs
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauzed == true)
+            {
+                Time.timeScale = 1;
+                pauzed = false;
+            }
+            else if (pauzed == false)
+            {
+                Time.timeScale = 0;
+                pauzed = true;
+            }
         }
 
     }
