@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class playerController : MonoBehaviour
 {
     public CharacterController controller;
+    private Animator animator;
     public float baseSpeed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -19,7 +20,6 @@ public class playerController : MonoBehaviour
 
     float speedBoost = 1f;
     Vector3 velocity;
-
     void Update()
     {
         if (controller.isGrounded && velocity.y < 0)
@@ -91,12 +91,15 @@ public class playerController : MonoBehaviour
                 pauzed = true;
             }
         }
-
     }
     public void talking()
     {
         Gun.SetActive(false);
         Tazer.SetActive(false);
         Handcuffs.SetActive(false);
+    }
+    public void MouseLock()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

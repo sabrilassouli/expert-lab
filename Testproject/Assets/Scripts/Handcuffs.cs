@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class Handcuffs : MonoBehaviour
 {
-    
+
     public float damage = 0f;
     public float range = 2f;
 
     public Camera fpsCam;
     playerController playerController;
 
-    public AudioSource cuffSound;    
+    public AudioSource cuffSound;
     NavMeshAgent agent;
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class Handcuffs : MonoBehaviour
     }
     void Arrest()
     {
-         RaycastHit hit;
+        RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) ;
         {
             Debug.Log(hit.transform.name);

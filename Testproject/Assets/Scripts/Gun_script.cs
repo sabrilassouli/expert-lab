@@ -9,6 +9,7 @@ public class Gun_script : MonoBehaviour
     public ParticleSystem muzzleflash;
     public GameObject impactEffect;
     playerController playerController;
+    public GameController gameController;
 
     public AudioSource gunshot;
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class Gun_script : MonoBehaviour
             //if (playerController.isInteracting == false)
             //{
             shoot();
+            gameController.currentscore -= 100;
             //}
         }
     }

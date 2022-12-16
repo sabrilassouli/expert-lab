@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject startDialogue = null;
+    [SerializeField] private GameObject angryDialogue = null;
     [SerializeField] private GameObject victory = null;
     [SerializeField] private GameObject talkSign = null;
     [SerializeField] private GameObject captureSign = null;
@@ -42,7 +43,7 @@ public class EnemyInteraction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                
+
                 playerController.isInteracting = true;
                 agent.speed = 0f;
                 talkSign.SetActive(false);
@@ -68,9 +69,10 @@ public class EnemyInteraction : MonoBehaviour
             talkSign.SetActive(false);
             captureSign.SetActive(false);
             startDialogue.SetActive(false);
+            angryDialogue.SetActive(false);
             enemyMove();
 
-            
+
 
             Cursor.lockState = CursorLockMode.Locked;
         }
